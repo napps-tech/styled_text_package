@@ -1,6 +1,16 @@
 import 'dart:ui' as ui show TextStyle, ParagraphStyle, FontFeature;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui
+    show
+        ParagraphStyle,
+        TextStyle,
+        StrutStyle,
+        lerpDouble,
+        Shadow,
+        FontFeature,
+        TextHeightBehavior,
+        TextLeadingDistribution;
 
 /// @nodoc
 class CustomStyle with Diagnosticable implements TextStyle {
@@ -12,30 +22,32 @@ class CustomStyle with Diagnosticable implements TextStyle {
   TextStyle get style => baseStyle ?? const TextStyle();
 
   @override
-  TextStyle apply(
-      {Color? color,
-      Color? backgroundColor,
-      TextDecoration? decoration,
-      Color? decorationColor,
-      TextDecorationStyle? decorationStyle,
-      double decorationThicknessFactor = 1.0,
-      double decorationThicknessDelta = 0.0,
-      String? fontFamily,
-      List<String>? fontFamilyFallback,
-      double fontSizeFactor = 1.0,
-      double fontSizeDelta = 0.0,
-      int fontWeightDelta = 0,
-      FontStyle? fontStyle,
-      double letterSpacingFactor = 1.0,
-      double letterSpacingDelta = 0.0,
-      double wordSpacingFactor = 1.0,
-      double wordSpacingDelta = 0.0,
-      double heightFactor = 1.0,
-      double heightDelta = 0.0,
-      TextBaseline? textBaseline,
-      Locale? locale,
-      List<Shadow>? shadows,
-      List<ui.FontFeature>? fontFeatures}) {
+  TextStyle apply({
+    Color? color,
+    Color? backgroundColor,
+    TextDecoration? decoration,
+    Color? decorationColor,
+    TextDecorationStyle? decorationStyle,
+    double decorationThicknessFactor = 1.0,
+    double decorationThicknessDelta = 0.0,
+    String? fontFamily,
+    List<String>? fontFamilyFallback,
+    double fontSizeFactor = 1.0,
+    double fontSizeDelta = 0.0,
+    int fontWeightDelta = 0,
+    FontStyle? fontStyle,
+    double letterSpacingFactor = 1.0,
+    double letterSpacingDelta = 0.0,
+    double wordSpacingFactor = 1.0,
+    double wordSpacingDelta = 0.0,
+    double heightFactor = 1.0,
+    double heightDelta = 0.0,
+    TextBaseline? textBaseline,
+    Locale? locale,
+    List<Shadow>? shadows,
+    List<ui.FontFeature>? fontFeatures,
+    ui.TextLeadingDistribution? leadingDistribution,
+  }) {
     return style.apply(
       color: color,
       backgroundColor: backgroundColor,
@@ -78,29 +90,31 @@ class CustomStyle with Diagnosticable implements TextStyle {
   }
 
   @override
-  TextStyle copyWith(
-      {bool? inherit,
-      Color? color,
-      Color? backgroundColor,
-      String? fontFamily,
-      List<String>? fontFamilyFallback,
-      double? fontSize,
-      FontWeight? fontWeight,
-      FontStyle? fontStyle,
-      double? letterSpacing,
-      double? wordSpacing,
-      TextBaseline? textBaseline,
-      double? height,
-      Locale? locale,
-      Paint? foreground,
-      Paint? background,
-      List<Shadow>? shadows,
-      List<ui.FontFeature>? fontFeatures,
-      TextDecoration? decoration,
-      Color? decorationColor,
-      TextDecorationStyle? decorationStyle,
-      double? decorationThickness,
-      String? debugLabel}) {
+  TextStyle copyWith({
+    bool? inherit,
+    Color? color,
+    Color? backgroundColor,
+    String? fontFamily,
+    List<String>? fontFamilyFallback,
+    double? fontSize,
+    FontWeight? fontWeight,
+    FontStyle? fontStyle,
+    double? letterSpacing,
+    double? wordSpacing,
+    TextBaseline? textBaseline,
+    double? height,
+    Locale? locale,
+    Paint? foreground,
+    Paint? background,
+    List<Shadow>? shadows,
+    List<ui.FontFeature>? fontFeatures,
+    TextDecoration? decoration,
+    Color? decorationColor,
+    TextDecorationStyle? decorationStyle,
+    double? decorationThickness,
+    String? debugLabel,
+    ui.TextLeadingDistribution? leadingDistribution,
+  }) {
     return style.copyWith(
       inherit: inherit,
       color: color,
@@ -232,4 +246,8 @@ class CustomStyle with Diagnosticable implements TextStyle {
 
   @override
   double? get wordSpacing => style.wordSpacing;
+
+  @override
+  TextLeadingDistribution? get leadingDistribution =>
+      TextLeadingDistribution.even;
 }
